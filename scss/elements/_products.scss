@@ -1,0 +1,111 @@
+@use "../mixin" as *;
+@use "../variables" as *;
+
+.products {
+    // display: flex;
+    // flex-wrap: wrap;
+    padding-top: toRem(50);
+    // justify-content: space-around;
+    // margin: 0 toRem(-10);
+
+    // &__card-wrapper {
+    //     padding: toRem(10);
+    // }
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    @media (max-width: toRem(320)) {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    }
+    gap: toRem(30);
+}
+.product {
+    max-width: toRem(280);
+    padding: toRem(15) toRem(10);
+    border: toRem(1) solid gray;
+    border-radius: toRem(15);
+    text-transform: capitalize;
+    min-height: toRem(400);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+    flex-basis: toRem(280);
+    @media (max-width: toRem(320)) {
+        width: 100%;
+    }
+    // .product__title
+
+    &__title {
+        font-size: toRem(18);
+        font-weight: 600;
+    }
+
+    // .product__image
+
+    &__image {
+        text-align: center;
+        img {
+            width: toRem(150);
+            height: toRem(150);
+            aspect-ratio: 150 / 150;
+            object-fit: contain;
+        }
+    }
+
+    // .product__description
+
+    &__description {
+        font-size: toRem(17);
+        line-height: 1.24;
+    }
+
+    // .product__price
+
+    &__price {
+    }
+
+    // .product__price-item
+
+    &__price-item {
+        &--old {
+            text-decoration: line-through;
+            color: rgb(133, 133, 133);
+        }
+        &--sale {
+            font-size: toRem(20);
+        }
+    }
+    &__byu {
+        color: white;
+        background-color: var(--buttonColor);
+        padding: toRem(5) toRem(20);
+        border-radius: toRem(15);
+        transition: background-color 0.3s;
+
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: var(--buttonHover);
+            }
+        }
+        &:active {
+            background-color: var(--buttonActive);
+        }
+    }
+    &__favorites {
+        position: absolute;
+        top: toRem(10);
+        right: toRem(15);
+        color: gray;
+        transition: color 0.3s;
+        background-color: #e7e7e7;
+        border-radius: 50%;
+        width: toRem(30);
+        height: toRem(30);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:hover {
+            color: red;
+        }
+    }
+}

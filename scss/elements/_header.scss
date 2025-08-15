@@ -1,0 +1,121 @@
+@use "../mixin" as *;
+@use "../variables" as *;
+.header {
+    padding-top: toRem(5);
+    color: var(--navText);
+    // .header__container
+
+    &__container {
+        display: flex;
+        align-items: center;
+        @media (max-width: toEm($mobile)) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+    // .header__logo
+
+    &__logo {
+        flex-basis: 7.84%;
+        max-width: toRem(100);
+        min-width: toRem(80);
+        img {
+            width: 100%;
+        }
+    }
+}
+.navigation {
+    flex-basis: 84%;
+    flex-grow: 1;
+}
+.menu {
+    padding-top: toRem(5);
+    padding-bottom: toRem(5);
+    font-size: toRem(17);
+    font-weight: 700;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: space-around;
+    @media (max-width: toEm($mobile)) {
+        // position: fixed;
+        // left: 0;
+        top: toRem(40);
+        width: 100%;
+        // height: 100%;
+        flex-direction: column;
+        justify-content: flex-start;
+        font-size: toRem(20);
+        gap: toRem(10);
+    }
+    &__desktop-el {
+        @media (max-width: toEm($mobile)) {
+            display: none;
+        }
+    }
+    &__mobile-el {
+        @media (min-width: toEm($mobile)) {
+            display: none;
+        }
+    }
+    a {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: toRem(3) toRem(5) toRem(3) toRem(5);
+        &:active {
+            color: var(--navActive);
+        }
+        &::after {
+            content: "";
+            width: toRem(10);
+            height: toRem(10);
+            background-color: var(--navText);
+            margin-left: toRem(5);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        &:hover {
+            &::after {
+                opacity: 1;
+            }
+        }
+    }
+    li {
+        position: relative;
+        max-width: toRem(195);
+        line-height: 1.14;
+        flex-grow: 1;
+        transition: all 0.3s;
+        &:hover {
+            & .menu__sub-menu {
+                visibility: visible;
+                pointer-events: all;
+                opacity: 1;
+            }
+        }
+        @media (max-width: toEm($mobile)) {
+            flex-grow: 0;
+            max-width: 100%;
+        }
+    }
+    // .menu__sub-menu
+
+    &__sub-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        visibility: hidden;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.5s;
+        background-color: #e6e5e5;
+        @media (max-width: toRem($mobile)) {
+            visibility: visible;
+            pointer-events: all;
+            opacity: 1;
+            position: static;
+        }
+    }
+}
