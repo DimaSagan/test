@@ -103,6 +103,7 @@
 
     &__sub-menu {
         position: absolute;
+        z-index: 10;
         top: 100%;
         left: 0;
         width: 100%;
@@ -110,6 +111,7 @@
         pointer-events: none;
         opacity: 0;
         transition: opacity 0.5s;
+
         background-color: #e6e5e5;
         @media (max-width: toRem($mobile)) {
             visibility: visible;
