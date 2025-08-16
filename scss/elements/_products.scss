@@ -13,6 +13,7 @@
     // }
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    justify-items: center;
     @media (max-width: toRem(320)) {
         grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
     }
@@ -30,6 +31,13 @@
     justify-content: space-around;
     position: relative;
     flex-basis: toRem(280);
+    transition: all 0.3s;
+    @media (any-hover: hover) {
+        &:hover {
+            transform: translateY(toRem(-10));
+            box-shadow: toRem(3) toRem(5) toRem(6) rgba(0, 0, 0, 0.358);
+        }
+    }
     @media (max-width: toRem(320)) {
         width: 100%;
     }
@@ -96,7 +104,7 @@
         top: toRem(10);
         right: toRem(15);
         color: gray;
-        transition: color 0.3s;
+        transition: color 0.3s ease-in-out;
         background-color: #e7e7e7;
         border-radius: 50%;
         width: toRem(30);
